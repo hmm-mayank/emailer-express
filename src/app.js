@@ -47,10 +47,10 @@ res.download(fileName, options, function (err) {
 });
 //  res.status(200).json({ filePath: downloadStatus });
 });
-app.get("/", (req, res) => {
-  const uploadFilePath = `${process.cwd()}/uploads`;
-  // readCsv();
-});
+// app.get("/", (req, res) => {
+//   const uploadFilePath = `${process.cwd()}/uploads`;
+//   // readCsv();
+// });
 app.get("/getEamils", (req, res) => {
   validateEmails().then((response) => {
     res.json(response);
