@@ -18,9 +18,8 @@ const app = express();
 app.use(morgan("dev"));
 app.use(express.json());
 
-app.use(cors({
-  origin: "*",
-}))
+app.use(cors());
+app.options('*', cors());
 // routes
 app.use("/api/projects", projectsRoutes);
 app.use("/api/workpackages", workpackagesRoutes);
@@ -50,7 +49,7 @@ res.download(fileName, options, function (err) {
 });
 app.get("/", (req, res) => {
   const uploadFilePath = `${process.cwd()}/uploads`;
-  readCsv();
+  // readCsv();
 });
 app.get("/getEamils", (req, res) => {
   validateEmails().then((response) => {

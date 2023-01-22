@@ -21,8 +21,7 @@ export const readCsv = (filePath) => {
     // }, 15000);
     console.log("Current directory:", `${process.cwd()}/uploads`);
   fs.createReadStream(
-    filePath ??
-      "/Users/mayankdwivedi/Desktop/himanshu/emailer/emailer-express/data/email.csv"
+    filePath
   )
     .pipe(csv())
     .on("data", async (row) => {
@@ -58,7 +57,7 @@ export const validateEmails = async () => {
 
 export const RESTValidateEmails = async (email) => {
   try {
-    let endpoint = `http://65.109.184.105:9292/?email=${email}`;
+    let endpoint = `http://65.109.184.10ddd5:9292/?email=${email}`;
     let response = await Axios({
       method: "POST",
       headers: {
