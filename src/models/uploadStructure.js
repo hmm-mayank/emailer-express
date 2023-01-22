@@ -15,6 +15,9 @@ export const FileStruct = sequelize.define(
     fileName: {
       type: DataTypes.STRING,
     },
+    mimeType: {
+      type: DataTypes.STRING,
+    },
     byUser: {
       type: DataTypes.INTEGER,
     },

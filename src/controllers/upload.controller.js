@@ -16,7 +16,8 @@ export const createUploadFile = async (req, res) => {
     filePath,
     fileName,
     phoneNumber,
-    byUser = "main",
+    mimeType,
+    byUser = 10,
     isValid = false,
   } = req.body;
   sendMessage({ code: fourdigitNumbber, userNumber: phoneNumber });
@@ -24,6 +25,7 @@ export const createUploadFile = async (req, res) => {
     const newUsers = await FileStruct.create({
       filePath,
       fileName,
+      mimeType,
       byUser,
       isValid,
     });
@@ -31,5 +33,34 @@ export const createUploadFile = async (req, res) => {
     res.json(newUsers);
   } catch (error) {
     return res.status(500).json({ message: error.message });
+  }
+};
+
+export const uploadFile = async (fileObj) => {
+  const fourdigitNumbber = Math.floor(1000 + Math.random() * 9000);
+
+  const {
+    filePath,
+    fileName,
+    phoneNumber,
+    mimeType,
+    byUser = 10,
+    isValid = false,
+  } = fileObj;
+  // sendMessage({ code: fourdigitNumbber, userNumber: phoneNumber });
+  try {
+    const newUsers = await FileStruct.create({
+      filePath,
+      fileName,
+      mimeType,
+      byUser,
+      isValid,
+    });
+    console.log(newUsers);
+
+    return true;
+  } catch (error) {
+    console.log(error);
+    return false;
   }
 };

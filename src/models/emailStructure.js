@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../db/database.js";
 
-export const Project = sequelize.define(
+export const Email = sequelize.define(
   "validEmails",
   {
     id: {
@@ -11,6 +11,11 @@ export const Project = sequelize.define(
     },
     email: {
       type: DataTypes.STRING,
+      unique: true,
+      allowNull: false,
+    },
+    rawInfo:{
+      type: DataTypes.JSON,
     },
     isValid: {
       type: DataTypes.BOOLEAN,
@@ -19,8 +24,7 @@ export const Project = sequelize.define(
       type: DataTypes.JSONB,
     },
     byUser: {
-      type: DataTypes.INTEGER,
-      unique: true,
+      type: DataTypes.INTEGER
     },
   },
   {
